@@ -8,6 +8,9 @@ const db = require('./config/connection');
 //set up a session
 const sess = {
     secret: 'Chicken Wing Chicken Dinner',
+    cookie: {
+        expires: 5*60*1000
+    },
     store: MongoStore.create({
         mongoUrl: 'mongodb://localhost:27017/mycookbook'
     })
@@ -35,6 +38,6 @@ app.get('*', (req, res) => {
 //open the database and start the server
 db.once('open', () => {
     app.listen(PORT, () => {
-        console.log(`Now listening to MyCookbooks server on PORT ${PORT}!`);
+        console.log(`🍐🍐🍐 Now listening to MyCookbooks server on PORT ${PORT}! 🍉🍉🍉`);
     })
 });
