@@ -23,8 +23,8 @@ const UserSchema = new Schema(
             required: true,
             minLength: 8
         },
-        savedRecipes: [RecipeSchema],
-        savedLinks: [LinkSchema]
+        // savedRecipes: [RecipeSchema],
+        // savedLinks: [LinkSchema]
     },
     {
         toJSON: {
