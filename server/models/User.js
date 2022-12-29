@@ -1,10 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-//import subdocuments that belong to the User (Recipt, Link)
-const RecipeSchema = require('./Recipe');
-const LinkSchema = require('./Link');
-
 //user schema
 const UserSchema = new Schema(
     {
@@ -24,12 +20,23 @@ const UserSchema = new Schema(
             required: true,
             minLength: 8
         },
-        savedRecipes: [RecipeSchema],
-        savedLinks: [LinkSchema]
+        savedRecipes: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Recipe'
+            }
+        ],
+        savedLinks: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Link'
+            }
+        ]
     },
     {
         toJSON: {
-            virtuals: true
+            virtuals: true,
+            getters: true
         }
     }
 );

@@ -11,16 +11,21 @@ router.get('/', (req, res) => {
     });
 });
 
-//TODO: Finish creating a session once the user is created for them. Upon completion of
-//the sign up, I want to user to be directed to their dashboard
-
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
         password: req.body.password,
         email: req.body.email
     })
-    .then(userData => res.json(userData))
+    .then(userData => {
+        req.session.save(() => {
+            req.session.user_id = userData.id;
+            req.session.username = userData.username;
+            req.session.loggedIn = true;
+
+            res.json({ message: ' 🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
+        })
+    })
     .catch(err => {
         console.log(err);
         res.status(500).json(err)
@@ -29,11 +34,10 @@ router.post('/', (req, res) => {
 
 router.post('/login', (req, res) => {
     User.findOne({
-        where: {
-            email: req.body.email
-        }
+        email: req.body.email
     })
     .then(userData => {
+
         if(!userData) {
             res.status(400).json({ message: 'There is no user with this email address!' })
             return
@@ -51,12 +55,29 @@ router.post('/login', (req, res) => {
             req.session.username = userData.username;
             req.session.loggedIn = true;
 
-            res.json({ user: userData, message: ' 🍐🍐🍐 This worked! Log in completed. 🍉🍉🍉', session: req.session })
+            // TODO: Could add a util later that just checks if the logged in is 'true' or 'false' to use on the fron end, and check for the session to be created and active.
+
+            res.json({ message: '🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
         });
     });
 });
 
-//TODO: Create a logout route for the user to destroy the session and log them out.
-//Need to shorten the time of the session so I can tell if the session is being created properly
-//and deleted properly.
+router.post('/logout', (req, res) => {
+    if(req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        })
+    } else {
+        res.status(404).end();
+    }
+});
+
+//TODO: Added for development purposes. Route can be deleted at a later time.
+router.delete('/:id', (req, res) => {
+    User.remove({
+        _id: req.params.id
+    })
+    .then(userData => res.json(userData))
+})
+
 module.exports = router;

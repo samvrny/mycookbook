@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const LinkSchema = new Schema(
     {
@@ -11,7 +11,15 @@ const LinkSchema = new Schema(
             type: String,
             required: true
         }
+    },
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        }
     }
 );
 
-module.exports = LinkSchema;
+const Link = model('Link', LinkSchema);
+
+module.exports = Link;
