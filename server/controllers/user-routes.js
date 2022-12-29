@@ -54,6 +54,8 @@ router.post('/login', (req, res) => {
             req.session.username = userData.username;
             req.session.loggedIn = true;
 
+            // TODO: Could add a util later that just checks if the logged in is 'true' or 'false' to use on the fron end, and check for the session to be created and active.
+
             res.json({ user: userData, message: ' 🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
         });
     });

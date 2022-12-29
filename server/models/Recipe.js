@@ -7,7 +7,7 @@ const RecipeSchema = new Schema(
             required: true,
             trim: true
         },
-        ingredient: {
+        ingredients: {
             type: [String],
             trim: true
         },
@@ -15,7 +15,15 @@ const RecipeSchema = new Schema(
             type: [String],
             trim: true
         }
+    },
+    {
+        toJSON: {
+            virtuals: true,
+            getters: true
+        }
     }
 )
 
-module.exports = RecipeSchema;
+const Recipe = model('Recipe', RecipeSchema);
+
+module.exports = Recipe;
