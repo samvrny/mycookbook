@@ -31,7 +31,28 @@ router.post('/newrecipe', auth, (req, res) => {
         })
 })
 
-router.put('/:id')
+router.put('/:id', (req, res) => {
+    Recipe.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+            name: req.body.name,
+            ingredients: req.body.ingredients,
+            instructions: req.body.instructions
+        },
+        { new: true, runValidators: true }
+    )
+    .then(recipeData => {
+        if(!recipeData) {
+            res.status(404).json({ message: 'No recipe found with this id.' });
+            return;
+        }
+        res.json(recipeData)
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
+    })
+})
 
 router.delete('/:id', auth, (req, res) => {
     Recipe.findOneAndDelete({
