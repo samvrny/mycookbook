@@ -5,6 +5,9 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const db = require('./config/connection');
 
+//TODO: Rearrange and label all files with notes so I know what everything is and what
+//it is doing exactly
+
 //set up a session
 const sess = {
     secret: 'Chicken Wing Chicken Dinner',
