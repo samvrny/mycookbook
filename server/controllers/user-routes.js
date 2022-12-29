@@ -37,8 +37,6 @@ router.post('/login', (req, res) => {
         email: req.body.email
     })
     .then(userData => {
-        console.log(req.body.email, '🍉🍉🍉')
-        console.log(userData, '🍉🍉🍉')
 
         if(!userData) {
             res.status(400).json({ message: 'There is no user with this email address!' })
