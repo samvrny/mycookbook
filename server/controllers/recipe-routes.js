@@ -31,8 +31,10 @@ router.post('/newrecipe', auth, (req, res) => {
         })
 })
 
+router.put('/:id')
+
 router.delete('/:id', auth, (req, res) => {
-    Recipe.findOne({
+    Recipe.findOneAndDelete({
         _id: req.params.id
     })
         .then(({ _id }) => {

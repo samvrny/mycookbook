@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
             req.session.username = userData.username;
             req.session.loggedIn = true;
 
-            res.json({ user: userData, message: ' 🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
+            res.json({ message: ' 🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
         })
     })
     .catch(err => {
@@ -57,7 +57,7 @@ router.post('/login', (req, res) => {
 
             // TODO: Could add a util later that just checks if the logged in is 'true' or 'false' to use on the fron end, and check for the session to be created and active.
 
-            res.json({ user: userData, message: ' 🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
+            res.json({ message: '🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
         });
     });
 });
@@ -71,5 +71,13 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
+
+//TODO: Added for development purposes. Route can be deleted at a later time.
+router.delete('/:id', (req, res) => {
+    User.remove({
+        _id: req.params.id
+    })
+    .then(userData => res.json(userData))
+})
 
 module.exports = router;
