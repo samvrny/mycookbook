@@ -22,6 +22,8 @@ router.post('/', (req, res) => {
             req.session.user_id = userData.id;
             req.session.username = userData.username;
             req.session.loggedIn = true;
+
+            res.json({ user: userData, message: ' 🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
         })
     })
     .catch(err => {
@@ -32,11 +34,12 @@ router.post('/', (req, res) => {
 
 router.post('/login', (req, res) => {
     User.findOne({
-        where: {
-            email: req.body.email
-        }
+        email: req.body.email
     })
     .then(userData => {
+        console.log(req.body.email, '🍉🍉🍉')
+        console.log(userData, '🍉🍉🍉')
+
         if(!userData) {
             res.status(400).json({ message: 'There is no user with this email address!' })
             return
