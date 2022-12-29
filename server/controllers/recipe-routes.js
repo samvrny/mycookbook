@@ -31,6 +31,8 @@ router.post('/newrecipe', auth, (req, res) => {
         })
 })
 
+//TODO: May need to update the put route later, to make sure it isn't just updating the overall database, 
+//but the users recipes as well
 router.put('/:id', (req, res) => {
     Recipe.findOneAndUpdate(
         { _id: req.params.id },
