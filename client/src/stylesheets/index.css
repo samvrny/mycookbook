@@ -12,6 +12,16 @@ code {
     monospace;
 }
 
-div {
-  background-color: red;
+/* NEED TO ADD DISPLAY FLEX TO HEADER to get it to touch the top of the screen. It is currently block */
+
+header {
+  background-color: green;
+  display: flex;
+}
+
+/* TODO: Need to fix the homepage so it fits the viewport but doesnt overflow from it */
+main {
+  background-color: yellow;
+  display: flex;
+  min-height: 100vh;
 }
