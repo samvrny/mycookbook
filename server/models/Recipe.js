@@ -24,6 +24,4 @@ const RecipeSchema = new Schema(
     }
 )
 
-const Recipe = model('Recipe', RecipeSchema);
-
-module.exports = Recipe;
+module.exports = RecipeSchema;
