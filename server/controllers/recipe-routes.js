@@ -27,24 +27,27 @@ router.post('/newrecipe', auth, (req, res) => {
 })
 
 router.put('/updaterecipe/:id', auth, (req, res) => {
-    User.findById(
-        { _id: req.session.user_id },
-    )
-    .then(userData => {
-        const user = userData
-        console.log(user)
-        user.save()
+    User.findById({ _id: req.session.user_id }, function (err, user) {
+        let apple = user.savedRecipes.indexOf(req.params.id, 0)
+        console.log(apple)
+        console.log(user.savedRecipes.id(req.params.id).name, 'APPLE')
+        console.log(user.savedRecipes[2].name)
+
+        user.savedRecipes[2].name = req.body.name
+
+        user.save(function(err) {
+            if(err) {
+                console.log(err)
+            } else {
+                console.log(user, 'APPLE')
+            }
+        })
     })
-        // .then(userData => {
-        //         userData.savedRecipes.id(req.params.id).name = req.body.name
-        //         userData.savedRecipes.id(req.params.id).ingredients = req.body.ingredients
-        //         userData.savedRecipes.id(req.params.id).instructions = req.body.instructions
-        //     res.json(userData.savedRecipes)
-        // })
+    //TODO: REALLY NEED TO FIGURE OUT this mother FUCKing PUT request holy good lord in heaven WWW.WHATTHEFUCK.COMMMMM
 })
 
 router.delete('/deleterecipe/:id', auth, (req, res) => {
-    User.findOneAndUpdate(
+    User.findByIdAndUpdate( //changed from findOneAndUpdate
         { _id: req.session.user_id },
         { $pull: { savedRecipes: { _id: req.params.id } } },
         { new: true }
