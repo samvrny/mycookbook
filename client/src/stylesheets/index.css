@@ -5,11 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  min-height: 100vh;
 }
 
 /* NEED TO ADD DISPLAY FLEX TO HEADER to get it to touch the top of the screen. It is currently block */
@@ -19,9 +15,8 @@ header {
   display: flex;
 }
 
-/* TODO: Need to fix the homepage so it fits the viewport but doesnt overflow from it */
 main {
-  background-color: yellow;
+  background-color: red;
   display: flex;
-  min-height: 100vh;
+  height: 100%;
 }

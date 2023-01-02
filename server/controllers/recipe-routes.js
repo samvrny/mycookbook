@@ -24,27 +24,25 @@ router.post('/newrecipe', auth, (req, res) => {
             console.log(err);
             res.status(500).json(err);
         })
-})
+});
 
-router.put('/updaterecipe/:id', auth, (req, res) => {
-    User.findById({ _id: req.session.user_id }, function (err, user) {
-        let apple = user.savedRecipes.indexOf(req.params.id, 0)
-        console.log(apple)
-        console.log(user.savedRecipes.id(req.params.id).name, 'APPLE')
-        console.log(user.savedRecipes[2].name)
+router.put('/updaterecipe/:id', auth, async (req, res) => {
+    await User.findById(
+        { _id: req.session.user_id }
+    )
+        .then(userData => {
+            userData.savedRecipes.id(req.params.id).name = req.body.name;
+            userData.savedRecipes.id(req.params.id).ingredients = req.body.ingredients;
+            userData.savedRecipes.id(req.params.id).instructions = req.body.instructions;
+            userData.save();
 
-        user.savedRecipes[2].name = req.body.name
-
-        user.save(function(err) {
-            if(err) {
-                console.log(err)
-            } else {
-                console.log(user, 'APPLE')
-            }
+            res.json(userData.savedRecipes);
         })
-    })
-    //TODO: REALLY NEED TO FIGURE OUT this mother FUCKing PUT request holy good lord in heaven WWW.WHATTHEFUCK.COMMMMM
-})
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
+});
 
 router.delete('/deleterecipe/:id', auth, (req, res) => {
     User.findByIdAndUpdate( //changed from findOneAndUpdate
@@ -54,9 +52,9 @@ router.delete('/deleterecipe/:id', auth, (req, res) => {
     )
         .then(userData => res.json(userData))
         .catch(err => {
-            console.log(err)
-            res.status(500).json(err)
+            console.log(err);
+            res.status(500).json(err);
         })
-})
+});
 
 module.exports = router;
