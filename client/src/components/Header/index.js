@@ -1,14 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import auth from "../../utils/auth";
 
 function Header() {
+
     return(
         <header>
             <h1>My Cookbook</h1>
+            <button onClick={auth}>AUTH CHECK</button>
             <nav>
                 <ul>
-                    {auth ? (
+                    {/* {auth() ? (
                         <ul>
                             Im Logged In!
                         </ul>
@@ -16,7 +17,7 @@ function Header() {
                         <ul>
                             Im NOT Logged In!
                         </ul>
-                    )}
+                    )} */}
                 </ul>
             </nav>
         </header>

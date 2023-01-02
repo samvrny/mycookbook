@@ -11,6 +11,21 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/session', (req, res) => {
+    // User.findOne(
+    //     req.session.user_id
+    // )
+    // const 
+    // .then(userData => res.json(userData))
+    const session = req.session
+    // console.log(session)
+    if(session) {
+        res.json(session.user_id)
+    } else {
+        res.json('No user signed in')
+    }
+})
+
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,

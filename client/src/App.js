@@ -4,10 +4,10 @@ import Home from './components/Home';
 
 function App() {
   return (
-    <div>
+    <div className='container'>
       <BrowserRouter>
-        <Header></Header>
         <main>
+          <Header></Header>
           <Routes>
             <Route path='/' element={<Home />} />
           </Routes>
