@@ -10,15 +10,6 @@
 
 const auth = () => {
     console.log('CLICK')
-    // const response = fetch('/user/session', {
-    //     method: 'GET'
-    // })
-
-    // if(response) {
-    //     console.log(response, 'Hello')
-    // } else {
-    //     console.log('APPLE')
-    // }
     fetch('/user/session' , {
         method: 'GET',
         headers: {
@@ -28,9 +19,11 @@ const auth = () => {
     })
     .then(response => {
         if(response.ok) {
-        return response.json();
+            console.log(response)
+            console.log('Why is this doing something')
+        return response.json()
         } else {
-            console.log('NO IT DOESN\'T WORK')
+            console.log('No Session Available')
         }
     })
 }
