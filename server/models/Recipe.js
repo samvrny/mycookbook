@@ -4,7 +4,7 @@ const RecipeSchema = new Schema(
     {
         name: {
             type: String,
-            required: true,
+            // required: true,
             trim: true
         },
         ingredients: {
@@ -24,6 +24,4 @@ const RecipeSchema = new Schema(
     }
 )
 
-const Recipe = model('Recipe', RecipeSchema);
-
-module.exports = Recipe;
+module.exports = RecipeSchema;
