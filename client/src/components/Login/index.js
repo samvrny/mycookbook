@@ -33,7 +33,9 @@ function Login() {
                 }
             })
 
-        Auth.login(response.session.cookie.expires)
+        const newDate = new Date().toUTCString(response.session.cookie.expires)
+        console.log(newDate)
+        Auth.login(newDate)
 
         console.log('SEE ME', response.session)
 

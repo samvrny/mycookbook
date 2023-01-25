@@ -5,8 +5,20 @@ import loadWebFont from "../../utils/webfont";
 
 function Header() {
 
-    function logout(e) {
+    async function logout(e) {
         console.log('Hello')
+
+        await fetch('/user/logout', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => {
+            if(response.ok) {
+                Auth.logout()
+            } else {
+                alert(response.statusText)
+            }
+        })
     }
 
     loadWebFont(['Black Han Sans', 'Urbanist'])
