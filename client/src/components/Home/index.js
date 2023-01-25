@@ -3,8 +3,6 @@ import loadWebFont from "../../utils/webfont";
 
 function Home() {
 
-
-
     loadWebFont(['Urbanist'])
 
     return (
@@ -35,7 +33,7 @@ function Home() {
                     Search for a recipe to use below from the food network, New York times,
                     and others. Search for a recipe below!
                 </p>
-                <label for='nyt'>Search New York Times:</label>
+                <label htmlFor='nyt'>Search New York Times:</label>
                 <input id='nyt' type='text'></input>
                 <br />
                 <p>
