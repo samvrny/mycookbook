@@ -8,24 +8,33 @@
 //     // }
 // };
 
-const auth = () => {
-    console.log('CLICK')
-    fetch('/user/session' , {
-        method: 'GET',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json'
-        }
-    })
+const checkAuth = () => {
+    fetch('/user/session')
     .then(response => {
         if(response.ok) {
-            console.log(response)
-            console.log('Why is this doing something')
-        return response.json()
+            console.log(response.json())
         } else {
-            console.log('No Session Available')
+            console.log('Not Logged In');
         }
     })
+    // fetch('/recipe')
+    //     .then(response => {
+    //         if (response.ok) {
+    //             console.log(response.json())
+    //         } else {
+    //             console.log('NOT QUITE WORKING')
+    //         }
+    //     })
+}
+
+const auth = () => {
+    checkAuth();
+
+    if (!checkAuth) {
+        console.log('NO AUTH')
+    } else {
+        console.log('YES AUTH')
+    }
 }
 
 module.exports = auth;

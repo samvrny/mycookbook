@@ -1,10 +1,14 @@
 import React from "react";
-// import auth from "../../utils/auth";
+import auth from "../../utils/auth";
 import { Link } from 'react-router-dom';
 import loadWebFont from "../../utils/webfont";
 
 function Header() {
     
+    function testAuth() {
+        auth();
+    }
+
     loadWebFont(['Black Han Sans', 'Urbanist'])
 
     return(
@@ -13,6 +17,7 @@ function Header() {
             <nav>
                 <Link></Link>
             </nav>
+            <button onClick={testAuth}>TEST AUTH</button>
         </header>
     )
 }

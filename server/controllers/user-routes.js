@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const session = require('express-session');
 const { User } = require('../models');
 const auth = require('../utils/auth');
 
@@ -13,19 +14,19 @@ router.get('/', (req, res) => {
 });
 
 router.get('/session', auth, (req, res) => {
+    // if(req.session.loggedIn) {
+    //     res.json('True')
+    // } else {
+    //     res.json('False')
+    // }
+    
     User.findOne({
         session: req.session.user_id
     })
     .then(userData => {
-        console.log(userData, 'APPLE')
+        // console.log(session)
         res.json(userData)
     })
-    // console.log(session)
-    // if(session) {
-    //     res.json(session)
-    // } else {
-    //     res.json('No user signed in')
-    // }
 })
 
 router.post('/', (req, res) => {

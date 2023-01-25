@@ -3,6 +3,8 @@ import loadWebFont from "../../utils/webfont";
 
 function Home() {
 
+
+
     loadWebFont(['Urbanist'])
 
     return (
