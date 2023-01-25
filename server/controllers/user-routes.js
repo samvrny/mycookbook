@@ -13,15 +13,6 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/session', auth, (req, res) => {    
-    User.findOne({
-        session: req.session.user_id
-    })
-    .then(userData => {
-        res.json(userData)
-    })
-})
-
 router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
@@ -34,7 +25,7 @@ router.post('/', (req, res) => {
             req.session.username = userData.username;
             req.session.loggedIn = true;
 
-            res.json({ message: ' 🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
+            res.json({ message: ' 🍌 This worked! Log in completed. 🍒', session: req.session })
         })
     })
     .catch(err => {
