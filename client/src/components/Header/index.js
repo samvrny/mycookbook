@@ -14,11 +14,12 @@ function Header() {
         })
         .then(response => {
             if(response.ok) {
-                Auth.logout()
+                console.log('logged out')
             } else {
-                alert(response.statusText)
+                console.log(response.statusText)
             }
         })
+        Auth.logout()
     }
 
     loadWebFont(['Black Han Sans', 'Urbanist'])

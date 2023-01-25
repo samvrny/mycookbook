@@ -12,7 +12,7 @@ const db = require('./config/connection');
 const sess = {
     secret: 'Chicken Wing Chicken Dinner',
     cookie: {
-        expires: 30*60*1000
+        expires: 10*60*1000
     },
     store: MongoStore.create({
         mongoUrl: 'mongodb://localhost:27017/mycookbook'
