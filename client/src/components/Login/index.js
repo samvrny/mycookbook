@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Auth from "../../utils/auth";
 
 function Login() {
 
@@ -31,7 +32,22 @@ function Login() {
                     alert(response.statusText)
                 }
             })
-        console.log('SEE ME', response.message)
+
+        Auth.login(response.session.cookie.expires)
+
+        console.log('SEE ME', response.session)
+
+        //TEST FETCH RECIPES HOLY FUCKING FUCK IT FUCKING FUCKING WORKS OH MY ASS
+        // let test = await fetch('/recipe')
+        // .then(test => {
+        //     if(test.ok) {
+        //         return test.json()
+        //     } else {
+        //         console.log('Error')
+        //     }
+        // })
+
+        // console.log(test)
     }
 
     return (

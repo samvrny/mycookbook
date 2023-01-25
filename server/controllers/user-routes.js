@@ -13,14 +13,14 @@ router.get('/', (req, res) => {
     });
 });
 
-// router.get('/session', auth, (req, res) => {    
-//     User.findOne({
-//         session: req.session.user_id
-//     })
-//     .then(userData => {
-//         res.json(userData)
-//     })
-// })
+router.get('/session', auth, (req, res) => {    
+    User.findOne({
+        session: req.session.user_id
+    })
+    .then(userData => {
+        res.json(userData)
+    })
+})
 
 router.post('/', (req, res) => {
     User.create({
@@ -68,9 +68,8 @@ router.post('/login', (req, res) => {
 
             // TODO: Could add a util later that just checks if the logged in is 'true' or 'false' to use on the fron end, and check for the session to be created and active.
 
-            res.json({ message: '🍌🍌🍌 This worked! Log in completed. 🍒🍒🍒', session: req.session })
+            res.json({ message: '🍌 This worked! Log in completed. 🍒', session: req.session })
         });
-        // res.json(userData)
     });
 });
 
