@@ -1,5 +1,8 @@
 const { Schema, model } = require('mongoose');
 
+const RecipeSchema = require('./Recipe')
+const LinkSchema = require('./Link')
+
 const GroupSchema = new Schema(
     {
         name: {

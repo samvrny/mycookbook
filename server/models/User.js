@@ -25,7 +25,7 @@ const UserSchema = new Schema(
             required: true,
             minLength: 8
         },
-        savedGroups: [GroupSchema], 
+        savedGroups: [GroupSchema],
         // savedRecipes: [RecipeSchema],
         // savedLinks: [LinkSchema]
     },
