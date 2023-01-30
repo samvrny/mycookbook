@@ -32,7 +32,7 @@ router.post('/newrecipe', auth, (req, res) => {
         { _id: req.session.user_id }
     )
         .then(userData => {
-            userData.savedGroups.id(req.body.oldId).savedRecipes.$pull(req.body.recipeId);
+            userData.savedGroups.id(req.body.oldId).savedRecipes.pull(req.body.recipeId);
             userData.savedGroups.id(req.body.newId).savedRecipes.push(req.body.recipe);
             userData.save();
 
