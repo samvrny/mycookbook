@@ -13,4 +13,17 @@ router.get('/', auth, (req, res) => {
     })
 })
 
+router.post('/addgroup', auth, (req, res) => {
+    User.findByIdAndUpdate(
+        { _id: req.session.user_id },
+        { $push: { savedGroups: req.body } },
+        { new: true }
+    )
+    .then(userData => res.json(userData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    })
+});
+
 module.exports = router;
