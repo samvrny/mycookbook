@@ -12,6 +12,7 @@ class Auth {
         return localStorage.getItem('loggedIn');
     }
 
+    //TODO: Redirect a user to the login screen if the session is expired or does not exist
     isSessionExpired(session) {
         try {
             if (session < Date.now() / 1000) {
