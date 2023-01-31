@@ -2,6 +2,10 @@ const router = require('express').Router();
 const { User } = require('../models');
 const auth = require('../utils/auth');
 
+//TODO:
+//add a route to grab all the data to print to a page; AKA the route will get all groups,
+//and send back all of their data. With each dataset the data will be pumped into an object
+//That can be used to create elements. 
 router.get('/', auth, (req, res) => {
     User.findOne({
         _id: req.session.user_id

@@ -3,7 +3,8 @@ const { User } = require('../models');
 const auth = require('../utils/auth');
 
 //TODO: 
-//must change to be a query that grabs the recipes withing a group 
+//must change to be a query that grabs the recipes withing a group;
+//change to return a specific recipes data when needed. 
 router.get('/', auth, (req, res) => {
     User.findOne({
         _id: req.session.user_id
@@ -48,8 +49,6 @@ router.put('/updategroup', auth, (req, res) => {
         })
 });
 
-//TODO:
-//change the recipe ID to be coming from the requests body rather than the parameters.
 router.put('/updaterecipe', auth, async (req, res) => {
     await User.findById(
         { _id: req.session.user_id }
@@ -71,7 +70,7 @@ router.put('/updaterecipe', auth, async (req, res) => {
 //TODO:
 //Delete a recipe AFTER finding it's group id. 
 router.delete('/deleterecipe/:id', auth, (req, res) => {
-    User.findByIdAndUpdate( //changed from findOneAndUpdate
+    User.findByIdAndUpdate(
         { _id: req.session.user_id },
         { $pull: { savedRecipes: { _id: req.params.id } } },
         { new: true }
