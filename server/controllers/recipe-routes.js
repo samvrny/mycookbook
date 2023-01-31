@@ -50,14 +50,14 @@ router.put('/updategroup', auth, (req, res) => {
 
 //TODO:
 //change the recipe ID to be coming from the requests body rather than the parameters.
-router.put('/updaterecipe/:id', auth, async (req, res) => {
+router.put('/updaterecipe', auth, async (req, res) => {
     await User.findById(
         { _id: req.session.user_id }
     )
         .then(userData => {
-            userData.savedGroups.id(req.body.groupId).savedRecipes.id(req.params.id).name = req.body.recipe.name;
-            userData.savedGroups.id(req.body.groupId).savedRecipes.id(req.params.id).ingredients = req.body.recipe.ingredients;
-            userData.savedGroups.id(req.body.groupId).savedRecipes.id(req.params.id).instructions = req.body.recipe.instructions;
+            userData.savedGroups.id(req.body.groupId).savedRecipes.id(req.body.recipeId).name = req.body.recipe.name;
+            userData.savedGroups.id(req.body.groupId).savedRecipes.id(req.body.recipeId).ingredients = req.body.recipe.ingredients;
+            userData.savedGroups.id(req.body.groupId).savedRecipes.id(req.body.recipeId).instructions = req.body.recipe.instructions;
             userData.save();
 
             res.json(userData.savedGroups);
