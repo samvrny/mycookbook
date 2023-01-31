@@ -9,7 +9,7 @@ function Dashboard() {
             <div>
                 <h3>My Recipes</h3>
                 <p>Go to your saved recipes:</p>
-                <Link to='/group'></Link>
+                <Link to='/group'>Click For Groups</Link>
             </div>
             <div>
                 <h3>Create Recipe</h3>
