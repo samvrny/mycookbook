@@ -12,28 +12,34 @@ function Header() {
             method: 'post',
             headers: { 'Content-Type': 'application/json' }
         })
-        .then(response => {
-            if(response.ok) {
-                console.log('logged out')
-            } else {
-                console.log(response.statusText)
-            }
-        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('logged out')
+                } else {
+                    console.log(response.statusText)
+                }
+            })
         Auth.logout()
     }
 
     loadWebFont(['Black Han Sans', 'Urbanist'])
 
-    return(
+    return (
         <header>
             <h1>My Cookbook</h1>
             <nav>
-                <Link to='/'>Homepage</Link>
                 {Auth.loggedIn() ? (
-                    <button onClick={logout}>Logout</button>
+                    <div>
+                        <Link to='/'>Homepage</Link>
+                        <Link to='/dashboard'>Dashboard</Link>
+                        <button onClick={logout}>Logout</button>
+                    </div>
                 ) : (
-                    <Link to='/login'>Login</Link>
-                )}     
+                    <div>
+                        <Link to='/'>Homepage</Link>
+                        <Link to='/login'>Login</Link>
+                    </div>
+                )}
             </nav>
         </header>
     )

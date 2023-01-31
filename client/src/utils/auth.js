@@ -27,7 +27,7 @@ class Auth {
     login(loggedIn) {
         // Saves user session to localStorage
         localStorage.setItem('loggedIn', loggedIn);
-        window.location.assign('/');
+        window.location.assign('/dashboard');
     }
 
     logout() {

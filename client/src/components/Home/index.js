@@ -19,12 +19,12 @@ function Home() {
                     so here you go! This is a place for you to do so. This application
                     is free to use and easy to navigate. I hope you enjoy!
                 </p>
-            </div>
-            <div>
+                <div>
                 <h2>Sign Up or Log In</h2>
                 <p>Create a free account or sign in below:</p>
                 <button>Sign Up</button>
                 <button>Log In</button>
+            </div>
             </div>
             <div>
                 <h2>Search Recipes</h2>
@@ -35,6 +35,10 @@ function Home() {
                 </p>
                 <label htmlFor='nyt'>Search New York Times:</label>
                 <input id='nyt' type='text'></input>
+                <label htmlFor='ggl'>Search Google:</label>
+                <input id='ggl' type='text'></input>
+                <label htmlFor='fnw'>Search Food Network:</label>
+                <input id='fnw' type='text'></input>
                 <br />
                 <p>
                     Like the recipe you found? Create a free account here, and save the
