@@ -26,4 +26,6 @@ router.post('/addgroup', auth, (req, res) => {
     })
 });
 
+//TODO: Add route that updates a groups names AND a route to delete a group
+
 module.exports = router;
