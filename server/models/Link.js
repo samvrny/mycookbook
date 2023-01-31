@@ -4,7 +4,6 @@ const LinkSchema = new Schema(
     {
         name: {
             type: String,
-            required: true,
             trim: true
         },
         link: {
@@ -20,6 +19,4 @@ const LinkSchema = new Schema(
     }
 );
 
-const Link = model('Link', LinkSchema);
-
-module.exports = Link;
+module.exports = LinkSchema;

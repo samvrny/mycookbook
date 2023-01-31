@@ -34,11 +34,7 @@ function Login() {
             })
 
         const newDate = new Date().toUTCString(response.session.cookie.expires)
-        console.log(newDate)
         Auth.login(newDate)
-
-        console.log('SEE ME', response.session)
-
         //TEST FETCH RECIPES HOLY FUCKING FUCK IT FUCKING FUCKING WORKS OH MY ASS
         // let test = await fetch('/recipe')
         // .then(test => {

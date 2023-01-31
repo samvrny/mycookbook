@@ -13,13 +13,31 @@ router.get('/', auth, (req, res) => {
         })
 });
 
+//ORIGINAL
+// router.post('/newrecipe', auth, (req, res) => {
+//     User.findByIdAndUpdate(
+//         { _id: req.session.user_id },
+//         { $push: { savedRecipes: req.body } },
+//         { new: true }
+//     )
+//         .then(userData => res.json(userData))
+//         .catch(err => {
+//             console.log(err);
+//             res.status(500).json(err);
+//         })
+// });
+
 router.post('/newrecipe', auth, (req, res) => {
     User.findByIdAndUpdate(
-        { _id: req.session.user_id },
-        { $push: { savedRecipes: req.body } },
-        { new: true }
+        { _id: req.session.user_id }
     )
-        .then(userData => res.json(userData))
+        .then(userData => {
+            userData.savedGroups.id(req.body.oldId).savedRecipes.pull(req.body.recipeId);
+            userData.savedGroups.id(req.body.newId).savedRecipes.push(req.body.recipe);
+            userData.save();
+
+            res.json(userData)
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);

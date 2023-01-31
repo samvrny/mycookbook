@@ -2,7 +2,9 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 //import subdocuments for recipe
-const RecipeSchema = require('./Recipe')
+// const RecipeSchema = require('./Recipe')
+// const LinkSchema = require('./Link')
+const GroupSchema = require('./Group')
 
 //user schema
 const UserSchema = new Schema(
@@ -23,13 +25,9 @@ const UserSchema = new Schema(
             required: true,
             minLength: 8
         },
-        savedRecipes: [RecipeSchema],
-        savedLinks: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Link'
-            }
-        ]
+        savedGroups: [GroupSchema],
+        // savedRecipes: [RecipeSchema],
+        // savedLinks: [LinkSchema]
     },
     {
         toJSON: {
