@@ -15,8 +15,8 @@ function Login() {
     };
 
     async function handleLogin(e) {
-        e.preventDefault()
-        console.log(formState)
+        e.preventDefault();
+        console.log(formState);
 
         let response = await fetch('/user/login', {
             method: 'POST',
@@ -51,7 +51,7 @@ function Login() {
     return (
         <section>
             <form onSubmit={handleLogin}>
-                <label htmlFor='username'>Email:</label>
+                <label htmlFor='email'>Email:</label>
                 <input
                     id='email'
                     name='email'

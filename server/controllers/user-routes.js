@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 
 //TODO:
 //after User is created, seed their database with the mongodata from a JSON file with pre-made data inside of it
-router.post('/', (req, res) => {
+router.post('/createuser', (req, res) => {
     User.create({
         username: req.body.username,
         password: req.body.password,

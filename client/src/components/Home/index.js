@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import loadWebFont from "../../utils/webfont";
 
 function Home() {
@@ -22,8 +23,8 @@ function Home() {
                 <div>
                 <h2>Sign Up or Log In</h2>
                 <p>Create a free account or sign in below:</p>
-                <button>Sign Up</button>
-                <button>Log In</button>
+                <Link to='/signup'>Sign Up</Link>
+                <Link to='/login'>Log In</Link>
             </div>
             </div>
             <div>
