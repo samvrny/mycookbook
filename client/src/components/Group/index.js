@@ -20,7 +20,7 @@ function Group() {
             }
     })
 
-    console.log(userGroups.PromiseResult)
+    console.log(userGroups)
 
     return (
         <section>
